@@ -20,7 +20,7 @@ public class TvProgramViewModel extends AndroidViewModel {
         tvProgramRepository = new TvProgramRepository();
     }
 
-    public LiveData<List<Programs>> getAllPrograms() {
-        return tvProgramRepository.getMutableLiveData();
+    public LiveData<List<Programs>> getAllPrograms(int page) {
+        return tvProgramRepository.getMutableLiveData(page);
     }
 }

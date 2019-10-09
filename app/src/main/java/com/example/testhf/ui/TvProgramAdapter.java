@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.testhf.R;
 import com.example.testhf.databinding.ListItemsBinding;
@@ -23,12 +24,13 @@ import java.util.List;
 
 
 public class TvProgramAdapter
-            extends RecyclerView.Adapter<TvProgramAdapter.ProgramViewHolder> implements ItemOnClick
+            extends RecyclerView.Adapter<TvProgramAdapter.ProgramViewHolder>
 {
 
     private List<Data> chanel;
     private List<Programs> programs;
     private Context context;
+
 
     @Nullable
     private final ItemOnClick ItemOnClickCallback;
@@ -49,8 +51,12 @@ public class TvProgramAdapter
 
         }
 
+    private void refreshItems() {
+        return;
+    }
 
-        @Override
+
+    @Override
         public void onBindViewHolder(@NonNull ProgramViewHolder programViewHolder, int i) {
             Programs chanelName = programs.get(i);
             programViewHolder.programListItemBinding.setTvprograms(chanelName);
@@ -72,10 +78,6 @@ public class TvProgramAdapter
             notifyDataSetChanged();
         }
 
-    @Override
-    public void cardClicked(TvProgram program) {
-
-    }
 
 
     class ProgramViewHolder extends RecyclerView.ViewHolder {
@@ -92,6 +94,6 @@ public class TvProgramAdapter
         }
 
 
-    }
+}
 
 

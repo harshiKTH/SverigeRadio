@@ -16,6 +16,10 @@ public class TvProgram {
     @Expose
     private List<Programs> programs;
 
+    @SerializedName("pagination")
+    @Expose
+    private Pagination pagination;
+
     public String getCopyRight() {
         return copyRight;
     }
@@ -31,6 +35,8 @@ public class TvProgram {
     public void setPrograms(List<Programs> programs) {
         this.programs = programs;
     }
+
+
 
 
 

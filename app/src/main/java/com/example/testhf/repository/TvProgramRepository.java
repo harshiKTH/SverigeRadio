@@ -23,11 +23,11 @@ public class TvProgramRepository {
     public TvProgramRepository() {
     }
 
-    public MutableLiveData<List<Programs>> getMutableLiveData() {
+    public MutableLiveData<List<Programs>> getMutableLiveData(int page) {
 
         final TvProgramApi userDataService = NetWorkModule.getService();
 
-        Call<TvProgram> call = userDataService.getProgrames();
+        Call<TvProgram> call = userDataService.getProgrames(page);
         call.enqueue(new Callback<TvProgram>() {
             @Override
             public void onResponse(Call<TvProgram> call, Response<TvProgram> response) {
@@ -35,7 +35,6 @@ public class TvProgramRepository {
 
                 if (tvProgram != null && tvProgram.getPrograms()!= null) {
                     programs = tvProgram.getPrograms();
-                    System.out.println("KKKKKKKKK " + programs.get(0).getDescription());
                     mutableLiveData.setValue(programs);
                 }
             }

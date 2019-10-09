@@ -23,7 +23,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private TvProgramViewModel tvProgramViewModel;
     private TvProgramAdapter tvProgramAdapter;
-    ItemOnClick ItemOnClickCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         tvProgramViewModel = ViewModelProviders.of(this).get(TvProgramViewModel.class);
-        tvProgramAdapter = new TvProgramAdapter( ItemOnClickCallback);
+        tvProgramAdapter = new TvProgramAdapter(itemOnClicklickCallback);
         recyclerView.setAdapter(tvProgramAdapter);
-        getAllPrograms();
+        getAllPrograms(1);
     }
 
-    private void getAllPrograms() {
-        tvProgramViewModel.getAllPrograms().observe(this, new Observer<List<Programs>>() {
+    private void getAllPrograms(int page) {
+        tvProgramViewModel.getAllPrograms(page).observe(this, new Observer<List<Programs>>() {
             @Override
             public void onChanged(@Nullable List<Programs> programs) {
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private final ItemOnClick itemOnClicklickCallback = new ItemOnClick() {
         @Override
         public void cardClicked(TvProgram program) {
-            System.out.println("UuUUUUUUUUUUU");
+            System.out.println("Debugs");
         }
     };
 }
