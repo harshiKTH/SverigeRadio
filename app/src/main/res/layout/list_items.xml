@@ -8,6 +8,12 @@
         <variable
             name="tvprograms"
             type="com.example.testhf.model.Programs"/>
+        <variable
+            name="main"
+            type="com.example.testhf.ui.MainActivity" />
+
+        <variable name="ItemOnClickCallBack" type="com.example.testhf.interfaces.ItemOnClick"/>
+
 
     </data>
     <LinearLayout
@@ -21,6 +27,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="5dp"
+            android:onClick="@{() ->  callback.onClick(tvprograms)"
             android:elevation="3dp"
             card_view:cardCornerRadius="1dp">
 
